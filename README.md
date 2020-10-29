@@ -1,5 +1,5 @@
 <b>Hello</b> <br />
-<strong><em><b><i>sms boomber</i></b></em></strong> <br />
+<h1><strong><em><b><i>sms boomber</i></b></em></strong></h1> <br />
 <hr /><br />
 <p>Joke with your friends via SMS Bomber<br />Or destroy the enemy cell phone</p><br />
 <p>How to use ?</p><br />
