@@ -1,5 +1,6 @@
-<b>Hello</b> <br />
 <h1><strong><em><b><i>sms boomber</i></b></em></strong></h1> <br />
+<h2>kill by sms boomber</h2>
+<img src="http://s16.picofile.com/file/8412245192/index.jpg" alt="sms boomber" />
 <hr /><br />
 <p>Joke with your friends via SMS Bomber<br />Or destroy the enemy cell phone</p><br />
 <p>How to use ?</p><br />
