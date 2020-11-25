@@ -8,3 +8,5 @@
 <br /><hr /><br />
 <p>This project is open source<br />
     So join us in adding project requests and new api :-)</p>
+<p>for end the Attack:</p><br />
+<code>Press And Hold the (CTRL + C)</code>
