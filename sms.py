@@ -75,5 +75,11 @@ else:
                 print(f'namavi status {namavi}')
             except:
                 print('namavi not')
+            try:
+                data_rubaki = {"api_version":"3","method":"sendCode","data":{"phone_number":phone_shad,"send_type":"SMS"}}
+                rubaki = requests.post('https://messengerg2c53.iranlms.ir/', json=data_rubaki)
+                print(f'rubaki status {rubaki}')
+            except:
+                print("rubaki not")
     except:
         pass
