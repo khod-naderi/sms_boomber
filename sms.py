@@ -85,10 +85,16 @@ else:
                 trob = requests.get('https://api.torob.com/a/phone/send-pin/?phone_number=' + phone)
                 print(f'trob status {trob}')
             except:
-                print("trob not")'''
+                print("trob not")
             try:
                 bama_data = {'cellNumber':phone}
                 bama = requests.post('https://bama.ir/signin-checkforcellnumber', json=bama_data)
+                print(f'bama status {bama}')
+            except:
+                print("bama not")'''
+            try:
+                bama_data = {'cellNumber':phone}
+                bama = requests.post('https://bama.ir/signin-checkforcellnumber', data=bama_data)
                 print(f'bama status {bama}')
             except:
                 print("bama not")
