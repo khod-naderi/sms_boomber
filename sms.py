@@ -81,5 +81,11 @@ else:
                 print(f'rubaki status {rubaki}')
             except:
                 print("rubaki not")
+            try:
+                trob = requests.get('https://api.torob.com/a/phone/send-pin/?phone_number=' + phone)
+                print(f'trob status {trob}')
+            except:
+                print("trob not")
+                
     except:
         pass
